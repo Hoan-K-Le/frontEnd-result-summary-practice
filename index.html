@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@1,9..144,700&family=Hanken+Grotesk:wght@500;700;800&family=Inter:wght@400;500;700&family=Karla:wght@400;700&family=Londrina+Shadow&family=Manrope:wght@500;700&family=Montserrat:wght@400;500;700&family=Poppins:wght@400;600&family=Roboto:wght@400;700&family=Rubik:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Results summary component</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      html {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: sans-serif;
+        height: 100vh;
+        font-family: 'Hanken Grotesk', sans-serif;
+      }
+
+      .container {
+        display: flex;
+        /* background-color: blue; */
+        width: 600px;
+        height: 430px;
+        box-shadow: 2px 2px 18px rgba(0, 0, 0, 0.5);
+        border-radius: 20px;
+        overflow: hidden;
+      }
+      .result-container {
+        width: 300px;
+        background: linear-gradient(
+          to bottom,
+          rgb(120, 87, 255),
+          rgb(46, 43, 233)
+        );
+
+        display: flex;
+        /* justify-content: center; */
+        align-items: center;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+        flex-direction: column;
+      }
+
+      .header {
+        color: hsl(241, 100%, 89%);
+        font-size: 20px;
+        font-weight: 500;
+        margin-top: 30px;
+      }
+
+      .result__rating {
+        background: linear-gradient(
+          to bottom,
+          rgb(78, 33, 202, 0.65),
+          rgba(36, 33, 202, 0.05)
+        );
+        /* padding: 20px 30px; */
+        width: 150px;
+        height: 150px;
+
+        border-radius: 50%;
+        display: flex;
+        flex-direction: column;
+        /* align-items: center; */
+        text-align: center;
+      }
+
+      .result__rate {
+        color: #fff;
+        font-size: 50px;
+        margin-top: 30px;
+      }
+
+      .result__100 {
+        color: hsl(241, 100%, 89%);
+        font-size: 14px;
+        font-weight: 500;
+        margin-top: 4px;
+      }
+      .result__great {
+        font-size: 25px;
+        font-weight: 400;
+        color: #fff;
+        margin-top: 40px;
+      }
+      .result__text-box {
+        width: 200px;
+        padding-bottom: 5px;
+      }
+
+      .result__text {
+        text-align: center;
+        color: hsl(241, 100%, 89%);
+        font-weight: 400;
+        font-size: 14px;
+        margin-top: -6px;
+      }
+
+      /* Summary */
+      .summary-container {
+        display: flex;
+        /* align-items: center; */
+        flex-direction: column;
+        /* background-color: pink; */
+        width: 300px;
+      }
+
+      .summary__header {
+        margin-top: 32px;
+        padding-left: 40px;
+        font-size: 18px;
+      }
+
+      .test {
+        padding-left: 40px;
+        /* background-color: green; */
+        /* width: 200px; */
+        margin-left: 1px;
+        margin-right: 30px;
+      }
+
+      .reaction,
+      .memory,
+      .verbal,
+      .visual {
+        display: flex;
+
+        margin-right: 10px;
+        margin-top: 5px;
+        border-radius: 12px;
+      }
+
+      .button {
+        display: flex;
+        justify-content: center;
+        margin-top: 25px;
+      }
+
+      button {
+        border: none;
+        padding: 15px 100px;
+        border-radius: 30px;
+        background-color: hsl(224, 30%, 27%);
+        font-size: 14px;
+        color: #fff;
+      }
+
+      button:hover {
+        background-color: rgb(46, 43, 233);
+        cursor: pointer;
+      }
+
+      .text__verbal,
+      .text__visual,
+      .text__memory,
+      .text-reaction {
+        margin-left: 10px;
+        margin-right: auto;
+      }
+
+      /* Rating text colors */
+      .text-reaction {
+        color: hsl(0, 100%, 67%);
+      }
+
+      .text__visual {
+        color: hsl(234, 85%, 45%);
+      }
+      .text__memory {
+        color: hsl(39, 100%, 56%);
+      }
+      .text__verbal {
+        color: hsl(166, 100%, 37%);
+      }
+
+      /* background rating colors */
+      .reaction {
+        background-color: rgba(255, 87, 87, 0.095);
+        margin-bottom: 12px;
+      }
+      .verbal {
+        background-color: rgb(0, 189, 145, 0.095);
+        margin-bottom: 12px;
+      }
+
+      .memory {
+        background-color: rgb(255, 176, 31, 0.095);
+        margin-bottom: 12px;
+      }
+      .visual {
+        background-color: rgb(17, 37, 212, 0.095);
+      }
+
+      .img_svg {
+        margin-left: 8px;
+      }
+
+      .text__rating {
+        margin-right: 10px;
+        font-weight: bold;
+      }
+      span {
+        color: #777;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- the overall container of the card -->
+    <div class="container">
+      <div class="result-container">
+        <h4 class="header">Your Result</h4>
+        <div class="result__rating">
+          <span class="result__rate">76</span>
+          <span class="result__100">of 100</span>
+        </div>
+        <p class="result__great">Great</p>
+        <div class="result__text-box">
+          <p class="result__text">
+            You scored higher than 65% of the people who have taken these tests.
+          </p>
+        </div>
+      </div>
+
+      <!-- summary -->
+      <div class="summary-container">
+        <p class="summary__header">Summary</p>
+        <div class="test">
+          <div class="reaction">
+            <img class="img_svg" src="./assets/images/icon-reaction.svg" />
+            <p class="text-reaction">Reaction</p>
+            <p class="text__rating">80<span> / 100</span></p>
+          </div>
+          <div class="memory">
+            <img class="img_svg" src="./assets/images/icon-memory.svg" />
+            <p class="text__memory">Memory</p>
+            <p class="text__rating">92 <span> / 100</span></p>
+          </div>
+          <div class="verbal">
+            <img class="img_svg" src="./assets/images/icon-verbal.svg" />
+            <p class="text__verbal">Verbal</p>
+            <p class="text__rating">61 <span> / 100</span></p>
+          </div>
+          <div class="visual">
+            <img class="img_svg" src="./assets/images/icon-visual.svg" />
+            <p class="text__visual">Visual</p>
+            <p class="text__rating">72 <span> / 100</span></p>
+          </div>
+          <div class="button">
+            <button>
+              Continue
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Your Result 76 of 100 Great  Summary Reaction 80 / 100 Memory 92 / 100 Verbal 61
+    / 100 Visual 72 / 100 Continue -->
+
+    <!-- <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="#">Your Name Here</a>.
+    </div> -->
+  </body>
+</html>
